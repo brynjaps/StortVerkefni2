@@ -2,7 +2,7 @@
   "name": "stort_verkefni2",
   "version": "1.0.0",
   "description": "",
-  "main": "scripts.js",
+  "main": "index.js",
   "scripts": {
     "eslint": "eslint index.js myndband.js",
     "stylelint": "stylelint *.scss scss/*.scss --syntax scss",
