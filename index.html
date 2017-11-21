@@ -6,10 +6,26 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Halló heimur</h1>
     <main>
+      <section class="cars">
+        <h1>Myndbandaleit</h1>
+        <form method="get" action="/" id="form">
+          <label for="number">Myndbanda-ID:</label>
+          <input type="text" id="number">
+
+          <button>Leita</button>
+        </form>
+        <div class="results">
+          <!--
+            <dl>
+              <dt>Litur</dt>
+              <dd>Blár</dd>
+            </dl>
+          -->
+        </div>
+      </section>
     </main>
 
-    <script src="index-compiled.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
