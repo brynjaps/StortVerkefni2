@@ -48,12 +48,15 @@ class Video {
   }
 
   onPressPlay(e) {
+    const btn = document.querySelector('.play-button > img');
     if (!this.video.paused) {
-      e.target.src = "./img/pause.svg";
+      btn.src = "./img/pause.svg";
       this.video.pause();
+      document.querySelector('.overlay').classList.remove('hidden');
     } else {
-      e.target.src = "./img/play.svg";
+      btn.src = "./img/play.svg";
       this.video.play();
+      document.querySelector('.overlay').classList.add('hidden');
     }
   }
 
@@ -107,7 +110,8 @@ class Video {
     controls.querySelector('.next-button').addEventListener('click', this.onPressNext);
     controls.querySelector('.next-button').addEventListener('click', this.onPressNext);
     controls.querySelector('.fullscreen-button').addEventListener('click', this.onPressFullscreen);
-    
+    document.querySelector('video').addEventListener('click', this.onPressPlay);
+    document.querySelector('button').addEventListener('click', () => { window.location.href = "/" })
   }
 }
 

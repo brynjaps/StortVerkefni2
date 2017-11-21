@@ -9,9 +9,12 @@
     <main>
       <h3 class="video-title"></h3>
       <div class="video-container">
-        <video></video>
+        <div class="overlay hidden">
+            <img src="./img/play.svg" alt="Play button">
+        </div>
+        <video>
+        </video>
       </div>
-      
       <div class="controls">
         <div class="back-button button-container">
           <img src="./img/back.svg" alt="Back button">
@@ -28,6 +31,9 @@
         <div class="next-button button-container">
           <img src="./img/next.svg" alt="">
         </div>
+      </div>
+      <div class="return">
+        <button class="go-back">Til baka</button>
       </div>
     </main>
     <script src="myndband-compiled.js"></script>
