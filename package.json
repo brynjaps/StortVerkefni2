@@ -8,9 +8,11 @@
     "stylelint": "stylelint *.scss scss/*.scss --syntax scss",
     "lint": "npm-run-all --parallel eslint stylelint",
     "babel": "babel index.js --watch --out-file index-compiled.js --source-maps",
-    "browser-sync": "browser-sync start --server --files index.html styles.css script-compiled.js",
+    "babel:myndband": "babel myndband.js --watch --out-file myndband-compiled.js --source-maps",
+    "browser-sync": "browser-sync start --server --files index.html myndband.html myndband.css styles.css script-compiled.js",
     "sass": "node-sass --source-map-embed --watch styles.scss styles.css",
-    "dev": "npm-run-all --parallel sass babel browser-sync"
+    "sass:myndband": "node-sass --source-map-embed --watch myndband.scss myndband.css",
+    "dev": "npm-run-all --parallel sass babel babel:myndband sass:myndband browser-sync"
   },
   "author": "",
   "license": "ISC",

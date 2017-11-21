@@ -1,15 +1,35 @@
 <!doctype html>
-<html class="grid" lang="is">
+<html>
   <head>
     <meta charset="utf-8">
     <title>Myndband</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="myndband.css">
   </head>
   <body>
-    <h1>Halló heimur</h1>
     <main>
+      <h3 class="video-title"></h3>
+      <div class="video-container">
+        <video></video>
+      </div>
+      
+      <div class="controls">
+        <div class="back-button button-container">
+          <img src="./img/back.svg" alt="Back button">
+        </div>
+        <div class="play-button button-container">
+          <img src="./img/play.svg" alt="Play button">
+        </div>
+        <div class="mute-button button-container">
+          <img src="./img/mute.svg" alt="Mute button">
+        </div>
+        <div class="fullscreen-button button-container">
+          <img src="./img/fullscreen.svg" alt="">
+        </div>
+        <div class="next-button button-container">
+          <img src="./img/next.svg" alt="">
+        </div>
+      </div>
     </main>
-
-    <script src="index-compiled.js"></script>
+    <script src="myndband-compiled.js"></script>
   </body>
 </html>

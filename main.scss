@@ -1,0 +1,24 @@
+/* this is where we should keep common styles */
+
+$darkgray: #333;
+$fontColor: #fff;
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  color: $fontColor;
+}
+
+body {
+  background: $darkgray;
+}
+
+
+img.fit {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.hidden {
+  display: none;
+}
