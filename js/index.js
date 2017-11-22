@@ -47,8 +47,8 @@ const program = (function() {
   //býr til div sem er með mynd af myndbandinu og titli þess
   function show(data) {
     let id = data.id.toString();
-    url = API_URL + id;
-    console.log("url2: "+url);
+    let htmlLink = "myndband.html?id=";
+    url = htmlLink + id;
     smallDiv = document.createElement('div');
     bigDiv.appendChild(smallDiv);
     let img = document.createElement('img');
