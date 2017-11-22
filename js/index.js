@@ -6,14 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
   program.init(main);
 });
 
-/**
- * Bílaleit. Sækir gögn með Ajax á apis.is.
- */
+
 const program = (function() {
   let url;
   let container;
   let heading;
+  let bigDiv;
+  let smallDiv;
 
+  //nær í data úr videos.json og sýnir þær á síðunni
   function fetchData() {
 
     url = API_URL;
@@ -26,22 +27,16 @@ const program = (function() {
     request.onload = function() {
       const data = JSON.parse(request.response);
       for(let i = 0; i < data.categories.length; i++) {
-        let bigDiv = document.createElement('div');
+        bigDiv = document.createElement('div');
         let title = document.createElement('h1');
         title.appendChild(document.createTextNode(data.categories[i].title))
         bigDiv.appendChild(title);
         container.appendChild(bigDiv);
         for(let j = 0; j < data.categories[i].videos.length; j++)
         {
-          let smallDiv = document.createElement('div');
-          bigDiv.appendChild(smallDiv);
           let video = (data.categories[i].videos[j])-1;
-          let img = document.createElement('img');
-          img.src = data.videos[video].poster;
-          smallDiv.appendChild(img);
-          let videoTitle = document.createElement('p');
-          videoTitle.appendChild(document.createTextNode(data.videos[video].title))
-          smallDiv.appendChild(videoTitle);
+          show(data.videos[video]);
+          timeStamp(data.videos[video].created);
         }
       }
     };
@@ -49,25 +44,117 @@ const program = (function() {
     request.send();
   }
 
-  function show() {
-    let catData = fetchData(categories, 1,'');
-    console.log('title: ' + catData.title);
+  //býr til div sem er með mynd af myndbandinu og titli þess
+  function show(data) {
+    let id = data.id.toString();
+    url = API_URL + id;
+    console.log("url2: "+url);
+    smallDiv = document.createElement('div');
+    bigDiv.appendChild(smallDiv);
+    let img = document.createElement('img');
+    img.src = data.poster;
+    let link = document.createElement('a');
+    link.href = url;
+    link.appendChild(img);
+    smallDiv.appendChild(link);
+    let videoTitle = document.createElement('p');
+    videoTitle.appendChild(document.createTextNode(data.title))
+    smallDiv.appendChild(videoTitle);
+  }
 
-    // console.log('title: ' + data.title);
-    //
-    // var dataArray = ['Title',data.title,'Created',data.created];
-    //
-    // for(let i=0; i<data.length; i++) {
-    //   var dl = document.createElement('dl');
-    //   var dt = document.createElement('dt');
-    //   var dd = document.createElement('dd');
-    //   container.appendChild(dl);
-    //   dl.appendChild(dt);
-    //   dt.appendChild(document.createTextNode(dataArray[i]));
-    //   dl.appendChild(dd);
-    //   dd.appendChild(document.createTextNode(dataArray[i+1]));
-    //   i++;
-    // }
+  //sýnir hversu langt er síðan myndbandið var sett inná síðuna
+  function timeStamp(dataCreated) {
+    let time = new Date().getTime();
+    let dataTime = dataCreated;
+    let since = time - dataTime;
+    let second = since/ 1000;
+    let minute = second/60;
+    let hour = minute/60;
+    let day = hour/24;
+    let week = day/7;
+    let year = day/365;
+
+    year = year.toString();
+    week = week.toString();
+    day = day.toString();
+    hour = hour.toString();
+
+    //let timeArray = [year, "ári síðan", "árum síðan", week, "viku síðan", "vikum síðan", day, "degi síðan", "dögum síðan", hour, "klukkustund síðan", "klukkustundum síðan"];
+
+    let timeArray = [year, week, day, hour];
+
+    for(let i = 0; i < timeArray.length; i++)
+    {
+      timeArray[i] = Math.floor(timeArray[i]);
+
+      // let i2 = i+1;
+      // console.log(i2);
+      // let i3 = i+2;
+      // console.log(i3);
+      //
+      // if(timeArray[i] >= 1)
+      // {
+      //   if(timeArray[i] < 2)
+      //   {
+      //     smallDiv.appendChild(document.createTextNode("Fyrir " + timeArray[i] + " " + timeArray[i2]));
+      //   }
+      //   else
+      //   {
+      //     smallDiv.appendChild(document.createTextNode("Fyrir " + timeArray[i] + " " + timeArray[i3]));
+      //   }
+      // }
+      // else break;
+    }
+
+    year = timeArray[0];
+    week = timeArray[1];
+    day = timeArray[2];
+    hour = timeArray[3];
+
+    if(year >= 1 )
+    {
+      if(year < 2)
+      {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + year + " ári síðan"));
+      }
+      else {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + year + " árum síðan"));
+      }
+    }
+    else if(week >= 1)
+    {
+      if(week < 2)
+      {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + week + " viku síðan"));
+      }
+      else
+      {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + week + " vikum síðan"));
+      }
+    }
+    else if(day >= 1)
+    {
+      if(day < 2)
+      {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + day + " degi síðan"));
+      }
+      else {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + year + " dögum síðan"));
+      }
+    }
+    else if(hour >= 1)
+    {
+      if(hour < 2)
+      {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + hour + " klukkustund síðan"));
+      }
+      else {
+        smallDiv.appendChild(document.createTextNode("Fyrir " + hour + " klukkustundum síðan"));
+      }
+    }
+    else {
+      smallDiv.appendChild(document.createTextNode("Fyrir minna en 1 klukkustund síðan"));
+    }
   }
 
   function init(main) {
@@ -83,4 +170,4 @@ const program = (function() {
   return {
     init: init
   }
-})();
+}());
