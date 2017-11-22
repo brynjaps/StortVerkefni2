@@ -23,6 +23,7 @@ var Video = function () {
     _classCallCheck(this, Video);
 
     this.isPlaying = false;
+    // binda foll
     this.onPressPlay = this.onPressPlay.bind(this);
     this.onPressMute = this.onPressMute.bind(this);
     this.onPressNext = this.onPressNext.bind(this);
@@ -55,11 +56,24 @@ var Video = function () {
       // send the request
       request.send();
     }
+    /*
+      Til baka takki, þegar ýtt er á hann og myndband er að spila, er það fært til baka um 3
+      sekúndur eða á byrjun
+    */
+
   }, {
     key: 'onPressBack',
     value: function onPressBack() {
       this.video.currentTime = this.video.currentTime - 3 > 0 ? this.video.currentTime - 3 : 0;
     }
+
+    /*
+      Spila takki, ef videó er ekki að spila er það spilað, annars er pásu táknmynd sýnd og
+      vídeó pásað.
+       Meðan vídeó er ekki að spila er sýnt overlay með play takka í miðju og gegnsæum
+      bakgrunn ( rgba(0, 0, 0, 0.2) í fyrirmynd).
+    */
+
   }, {
     key: 'onPressPlay',
     value: function onPressPlay(e) {
@@ -74,11 +88,21 @@ var Video = function () {
         document.querySelector('.overlay').classList.add('hidden');
       }
     }
+    /*
+      Áfram takki, þegar ýtt er á hann og myndband er að spila, er það fært áfram um 3
+    sekúndur eða á enda
+    */
+
   }, {
     key: 'onPressNext',
     value: function onPressNext() {
       this.video.currentTime = this.video.currentTime + 3 > this.video.duration ? this.video.duration : this.video.currentTime + 3;
     }
+
+    /*
+      Slökkva á hljóði takki, ef hljóð er að spila er slökkt á því annars öfugt
+    */
+
   }, {
     key: 'onPressMute',
     value: function onPressMute(e) {

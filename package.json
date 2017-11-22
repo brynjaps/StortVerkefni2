@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint index.js myndband.js",
-    "stylelint": "stylelint *.scss scss/*.scss --syntax scss",
+    "stylelint": "stylelint *.scss scss/*.scss --syntax scss --fix",
     "lint": "npm-run-all --parallel eslint stylelint",
     "babel": "babel index.js --watch --out-file index-compiled.js --source-maps",
     "babel:myndband": "babel myndband.js --watch --out-file myndband-compiled.js --source-maps",
