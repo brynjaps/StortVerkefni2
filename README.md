@@ -17,3 +17,6 @@ To run in development mode - live reload and automatic compilation of both scss 
 ```sh
 npm run dev
 ```
+
+## Myndbond
+To check out the video part just start the project with the npm run dev and browse to localhost:3000/myndband.html?id=2. Note that the port number can change.
