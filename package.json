@@ -10,7 +10,7 @@
     "babel": "babel ./js/index.js --watch --out-file ./dist/index.js --source-maps",
     "babel:myndband": "babel ./js/myndband.js --watch --out-file ./dist/myndband.js --source-maps",
     "browser-sync": "browser-sync start --server --files index.html myndband.html myndband.css styles.css",
-    "sass": "node-sass --source-map-embed --watch ./style/styles.scss ./dist/styles.css",
+    "sass": "node-sass --source-map-embed --watch ./style/index.scss ./dist/index.css",
     "sass:myndband": "node-sass --source-map-embed --watch ./style/myndband.scss ./dist/myndband.css",
     "build:js": "babel js -d dist --source-maps",
     "build:sass": "node-sass --source-map-embed style -o dist",

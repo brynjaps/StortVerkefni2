@@ -13,6 +13,7 @@ const program = (function() {
   let heading;
   let bigDiv;
   let smallDiv;
+  let medDiv;
 
   //nær í data úr videos.json og sýnir þær á síðunni
   function fetchData() {
@@ -32,6 +33,9 @@ const program = (function() {
         title.appendChild(document.createTextNode(data.categories[i].title))
         bigDiv.appendChild(title);
         container.appendChild(bigDiv);
+        medDiv = document.createElement('div');
+        medDiv.setAttribute('class','container');
+        bigDiv.appendChild(medDiv);
         for(let j = 0; j < data.categories[i].videos.length; j++)
         {
           let video = (data.categories[i].videos[j])-1;
@@ -50,13 +54,13 @@ const program = (function() {
     let htmlLink = "myndband.html?id=";
     url = htmlLink + id;
     smallDiv = document.createElement('div');
-    bigDiv.appendChild(smallDiv);
+    let link = document.createElement('a');
+    link.appendChild(smallDiv);
+    link.href = url;
+    medDiv.appendChild(link);
     let img = document.createElement('img');
     img.src = data.poster;
-    let link = document.createElement('a');
-    link.href = url;
-    link.appendChild(img);
-    smallDiv.appendChild(link);
+    smallDiv.appendChild(img);
     let videoTitle = document.createElement('p');
     videoTitle.appendChild(document.createTextNode(data.title))
     smallDiv.appendChild(videoTitle);
@@ -111,49 +115,52 @@ const program = (function() {
     day = timeArray[2];
     hour = timeArray[3];
 
+    let smallP = document.createElement('p');
+    smallDiv.appendChild(smallP);
+
     if(year >= 1 )
     {
       if(year < 2)
       {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + year + " ári síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + year + " ári síðan"));
       }
       else {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + year + " árum síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + year + " árum síðan"));
       }
     }
     else if(week >= 1)
     {
       if(week < 2)
       {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + week + " viku síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + week + " viku síðan"));
       }
       else
       {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + week + " vikum síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + week + " vikum síðan"));
       }
     }
     else if(day >= 1)
     {
       if(day < 2)
       {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + day + " degi síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + day + " degi síðan"));
       }
       else {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + year + " dögum síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + year + " dögum síðan"));
       }
     }
     else if(hour >= 1)
     {
       if(hour < 2)
       {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + hour + " klukkustund síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + hour + " klukkustund síðan"));
       }
       else {
-        smallDiv.appendChild(document.createTextNode("Fyrir " + hour + " klukkustundum síðan"));
+        smallP.appendChild(document.createTextNode("Fyrir " + hour + " klukkustundum síðan"));
       }
     }
     else {
-      smallDiv.appendChild(document.createTextNode("Fyrir minna en 1 klukkustund síðan"));
+      smallP.appendChild(document.createTextNode("Fyrir minna en 1 klukkustund síðan"));
     }
   }
 
@@ -168,6 +175,6 @@ const program = (function() {
   }
 
   return {
-    init: init
+    init: init,
   }
 }());
