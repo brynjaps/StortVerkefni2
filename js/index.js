@@ -54,6 +54,7 @@ const program = (function() {
     let htmlLink = "myndband.html?id=";
     url = htmlLink + id;
     smallDiv = document.createElement('div');
+    smallDiv.setAttribute('class', 'flex-item');
     let link = document.createElement('a');
     link.appendChild(smallDiv);
     link.href = url;
