@@ -2,18 +2,37 @@
 
 $darkgray: #333;
 $fontColor: #fff;
+$max-width: 1200px;
+$gutter: 20px;
 
-* {
-  font-family: Arial, Helvetica, sans-serif;
-  color: $fontColor;
-}
+// * {
+//   font-family: Arial, Helvetica, sans-serif;
+//   color: $fontColor;
+// }
 
 body {
   background: $darkgray;
+
 }
 
 .fit {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+html {
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $fontColor;
+
+  @media (min-width: $max-width) {
+    margin: 0;
+  }
+}
+
+img { /* stylelint-disable-line */
+  max-width: 100%;
 }

@@ -14,6 +14,7 @@ const program = (function() {
   let bigDiv;
   let smallDiv;
   let medDiv;
+  let link;
 
   //nær í data úr videos.json og sýnir þær á síðunni
   function fetchData() {
@@ -34,7 +35,9 @@ const program = (function() {
         bigDiv.appendChild(title);
         container.appendChild(bigDiv);
         medDiv = document.createElement('div');
-        medDiv.setAttribute('class','container');
+        medDiv.setAttribute('class','row');
+        //medDiv.classList.add('col-md-12');
+        //medDiv.classList.add('col');
         bigDiv.appendChild(medDiv);
         for(let j = 0; j < data.categories[i].videos.length; j++)
         {
@@ -54,17 +57,20 @@ const program = (function() {
     let htmlLink = "myndband.html?id=";
     url = htmlLink + id;
     smallDiv = document.createElement('div');
-    smallDiv.setAttribute('class', 'flex-item');
-    let link = document.createElement('a');
-    link.appendChild(smallDiv);
+    smallDiv.setAttribute('class','col');
+    smallDiv.classList.add('col-4');
+    smallDiv.classList.add('col-md-6');
+    smallDiv.classList.add('col-sm-12');
+    link = document.createElement('a');
+    smallDiv.appendChild(link);
     link.href = url;
-    medDiv.appendChild(link);
+    medDiv.appendChild(smallDiv);
     let img = document.createElement('img');
     img.src = data.poster;
-    smallDiv.appendChild(img);
+    link.appendChild(img);
     let videoTitle = document.createElement('p');
     videoTitle.appendChild(document.createTextNode(data.title))
-    smallDiv.appendChild(videoTitle);
+    link.appendChild(videoTitle);
     let miniDiv = document.createElement('div');
     let time = convertTime(data.duration);
     let textMiniDiv = document.createTextNode(time);
@@ -132,7 +138,7 @@ const program = (function() {
     hour = timeArray[3];
 
     let smallP = document.createElement('p');
-    smallDiv.appendChild(smallP);
+    link.appendChild(smallP);
 
     if(year >= 1 )
     {

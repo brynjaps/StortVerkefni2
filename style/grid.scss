@@ -37,13 +37,17 @@
   }
 
   &-md {
-    @media (max-width: 1000px) {
+    @media (max-width: 1000px) and (min-width: 501px) {
       &-12 {
         @include columns(12);
       }
 
       &-6 {
         @include columns(6);
+      }
+
+      &-5 {
+        @include columns(5);
       }
 
       &-3 {
