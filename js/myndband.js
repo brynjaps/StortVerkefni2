@@ -55,11 +55,11 @@ class Video {
     // and show overlay
     // else play it
     if (!this.video.paused) {
-      btn.src = './img/pause.svg';
+      btn.src = './img/play.svg';
       this.video.pause();
       document.querySelector('.overlay').classList.remove('hidden');
     } else {
-      btn.src = './img/play.svg';
+      btn.src = './img/pause.svg';
       this.video.play();
       document.querySelector('.overlay').classList.add('hidden');
     }
@@ -70,8 +70,8 @@ class Video {
   */
   onPressNext() {
     this.video.currentTime = (
-      (this.video.currentTime + 3) > this.video.duration ? 
-        this.video.duration : 
+      (this.video.currentTime + 3) > this.video.duration ?
+        this.video.duration :
         (this.video.currentTime + 3));
   }
 
@@ -117,7 +117,8 @@ class Video {
     this.video.src = info.video;
     // when we can start to play we do so
     this.video.oncanplay = () => {
-      this.video.play();
+      this.video.pause();
+      document.querySelector('.overlay').classList.remove('hidden');
     };
   }
 
@@ -150,4 +151,3 @@ document.addEventListener('DOMContentLoaded', () => {
   const video = new Video();
   video.init(videoParam.get('id'));
 });
-
