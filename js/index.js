@@ -65,6 +65,21 @@ const program = (function() {
     let videoTitle = document.createElement('p');
     videoTitle.appendChild(document.createTextNode(data.title))
     smallDiv.appendChild(videoTitle);
+    let miniDiv = document.createElement('div');
+    let time = convertTime(data.duration);
+    let textMiniDiv = document.createTextNode(time);
+    img.appendChild(miniDiv);
+    miniDiv.appendChild(textMiniDiv);
+  }
+
+  function convertTime(org) {
+    const minute = Math.floor(org/60);
+    const second = Math.floor(org%60);
+    if (second < 10) {
+      return(minute + ':0' + second);
+    } else {
+      return(minute + ':' + second);
+    }
   }
 
   //sýnir hversu langt er síðan myndbandið var sett inná síðuna
