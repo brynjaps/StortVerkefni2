@@ -1,22 +1,22 @@
 # StortVerkefni2
 
 ## Folder Structure
-We split the scss and the javascript files into two separate folders, style and js. 
+Við settum scss og javascript skrárnar í sitthvora möppuna, style og js.
 
 ## Git Ignore
-On top of the common ignores like node_modules and .DS_Store we ignore all build files and output from both babel and scss.
+Við notuðum git-hunsun á þessar helstu hunsanir eins og node_modules og .DS_Store við hunsuðum alla build files og output frá bæði babel og scss.
 
 ## Build
-Clone the project from github and run the build command with npm.
+Afritum verkefnið frá github og keyrum run build með npm.
 ```sh
 npm run build
 ```
 
 ## Developement
-To run in development mode - live reload and automatic compilation of both scss and js, run the dev command.
+Til að keyra í development mode - live reload og automatic compilation af bæði scss og js, keyrum dev command.
 ```sh
 npm run dev
 ```
 
 ## Myndbond
-To check out the video part just start the project with the npm run dev and browse to localhost:3000/myndband.html?id=2. Note that the port number can change.
+Til að komast í video partinn þegar indexinn var enn í vinnslu þurftum við að gera run dev og til að skoða video síðuna eftir að localhost síðan byrtist, þá afrituðum við þennan tengil localhost:3000/myndband.html?id=2. Athugið að port númerið gæti breyst.
