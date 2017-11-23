@@ -56,6 +56,8 @@ const program = (function() {
     let id = data.id.toString();
     let htmlLink = "myndband.html?id=";
     url = htmlLink + id;
+    let nDiv = document.createElement('div');
+    nDiv.setAttribute('class','div__image');
     smallDiv = document.createElement('div');
     smallDiv.setAttribute('class','col');
     smallDiv.classList.add('col-4');
@@ -66,15 +68,18 @@ const program = (function() {
     link.href = url;
     medDiv.appendChild(smallDiv);
     let img = document.createElement('img');
+    img.setAttribute('class', 'image');
     img.src = data.poster;
-    link.appendChild(img);
+    link.appendChild(nDiv);
+    nDiv.appendChild(img);
     let videoTitle = document.createElement('p');
-    videoTitle.appendChild(document.createTextNode(data.title))
+    videoTitle.appendChild(document.createTextNode(data.title));
     link.appendChild(videoTitle);
     let miniDiv = document.createElement('div');
+    miniDiv.setAttribute('class','duration');
     let time = convertTime(data.duration);
     let textMiniDiv = document.createTextNode(time);
-    img.appendChild(miniDiv);
+    nDiv.appendChild(miniDiv);
     miniDiv.appendChild(textMiniDiv);
   }
 

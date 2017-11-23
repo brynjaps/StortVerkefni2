@@ -20,3 +20,23 @@ body {
   /* stylelint-disable-line */
   box-sizing: inherit;
 }
+
+.duration {
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.image {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+}
+
+.div__image {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 500px;
+}

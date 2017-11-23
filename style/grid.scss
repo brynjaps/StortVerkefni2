@@ -57,7 +57,7 @@
   }
 
   &-sm {
-    @media (max-width: 500px) {
+    @media (max-width: 500px) and (min-width: 1px) {
       &-12 {
         @include columns(12);
       }
