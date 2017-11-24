@@ -196,6 +196,8 @@ const program = (function() {
     else {
       smallP.appendChild(document.createTextNode("Fyrir minna en 1 klukkustund síðan"));
     }
+
+    smallP.setAttribute('class','time');
   }
 
   function init(main) {
