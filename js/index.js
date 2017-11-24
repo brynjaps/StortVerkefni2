@@ -16,18 +16,28 @@ const program = (function() {
   let medDiv;
   let link;
 
+  function empty(el) {
+    while (el.firstChild) {
+      el.removeChild(el.firstChild);
+    }
+  }
+
   //nær í data úr videos.json og sýnir þær á síðunni
   function fetchData() {
 
     url = API_URL;
 
-    console.log('url' + url);
+    empty(container);
+    const img = document.createElement('img');
+    img.src = 'loading.gif';
+    container.appendChild(img);
 
     const request = new XMLHttpRequest();
 
     request.open('GET', url, true);
     request.onload = function() {
       const data = JSON.parse(request.response);
+      empty(container);
       for(let i = 0; i < data.categories.length; i++) {
         bigDiv = document.createElement('div');
         //bigDiv.setAttribute('class','bottom');
@@ -42,8 +52,6 @@ const program = (function() {
         container.appendChild(bottom);
         medDiv = document.createElement('div');
         medDiv.setAttribute('class','row');
-        //medDiv.classList.add('col-md-12');
-        //medDiv.classList.add('col');
         bigDiv.appendChild(medDiv);
         for(let j = 0; j < data.categories[i].videos.length; j++)
         {
@@ -124,24 +132,6 @@ const program = (function() {
     for(let i = 0; i < timeArray.length; i++)
     {
       timeArray[i] = Math.floor(timeArray[i]);
-
-      // let i2 = i+1;
-      // console.log(i2);
-      // let i3 = i+2;
-      // console.log(i3);
-      //
-      // if(timeArray[i] >= 1)
-      // {
-      //   if(timeArray[i] < 2)
-      //   {
-      //     smallDiv.appendChild(document.createTextNode("Fyrir " + timeArray[i] + " " + timeArray[i2]));
-      //   }
-      //   else
-      //   {
-      //     smallDiv.appendChild(document.createTextNode("Fyrir " + timeArray[i] + " " + timeArray[i3]));
-      //   }
-      // }
-      // else break;
     }
 
     year = timeArray[0];

@@ -13,7 +13,12 @@ class Video {
     document.querySelector('.overlay').classList.remove('hidden');
   }
 
+
   onLoadMetaData() {
+    const img = document.createElement('img');
+    img.src = 'loading.gif';
+    main.appendChild(img);
+
     // create a new instance of XMLHttpRequest
     const request = new XMLHttpRequest();
     // set the url
