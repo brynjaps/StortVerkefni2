@@ -80,6 +80,7 @@ const program = (function() {
     nDiv.appendChild(img);
     let videoTitle = document.createElement('p');
     videoTitle.appendChild(document.createTextNode(data.title));
+    videoTitle.setAttribute('class','title');
     link.appendChild(videoTitle);
     let miniDiv = document.createElement('div');
     miniDiv.setAttribute('class','duration');
