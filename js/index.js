@@ -59,10 +59,11 @@ const program = (function() {
     let nDiv = document.createElement('div');
     nDiv.setAttribute('class','div__image');
     smallDiv = document.createElement('div');
-    smallDiv.setAttribute('class','col');
-    smallDiv.classList.add('col-4');
-    smallDiv.classList.add('col-md-6');
-    smallDiv.classList.add('col-sm-12');
+    //smallDiv.setAttribute('class','col');
+    //smallDiv.classList.add('col-lg-4');
+    //smallDiv.classList.add('col-md-6');
+    //smallDiv.classList.add('col-sm-12');
+    smallDiv.setAttribute('class','col-sm-12');
     link = document.createElement('a');
     smallDiv.appendChild(link);
     link.href = url;
