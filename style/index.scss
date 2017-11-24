@@ -2,8 +2,9 @@
 @import "grid.scss";
 
 html {
-  margin-right: $gutter;
-  margin-left: $gutter;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
   box-sizing: border-box;
 }
 

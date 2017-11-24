@@ -52,8 +52,8 @@ $gutter: 20px;
         @include columns(5);
       }
 
-      &-3 {
-        @include columns(3);
+      &-4 {
+        @include columns(4);
       }
     }
   }
