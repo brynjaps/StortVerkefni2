@@ -6,6 +6,7 @@ html {
   max-width: 1200px;
   margin: auto;
   box-sizing: border-box;
+  padding: 10px;
 }
 
 a {
@@ -40,4 +41,10 @@ body {
   display: inline-block;
   width: 100%;
   max-width: 500px;
+}
+
+.bottom {
+  border-bottom: 1px solid #eee;
+  margin: auto;
+  margin-bottom: 30px;
 }

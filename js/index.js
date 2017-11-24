@@ -30,10 +30,16 @@ const program = (function() {
       const data = JSON.parse(request.response);
       for(let i = 0; i < data.categories.length; i++) {
         bigDiv = document.createElement('div');
+        //bigDiv.setAttribute('class','bottom');
         let title = document.createElement('h1');
         title.appendChild(document.createTextNode(data.categories[i].title))
         bigDiv.appendChild(title);
         container.appendChild(bigDiv);
+        let bottom = document.createElement('div');
+        bottom.setAttribute('class','bottom');
+        bottom.classList.add('col');
+        bottom.classList.add('col-10');
+        container.appendChild(bottom);
         medDiv = document.createElement('div');
         medDiv.setAttribute('class','row');
         //medDiv.classList.add('col-md-12');
