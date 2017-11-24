@@ -10,6 +10,7 @@ class Video {
     this.onPressNext = this.onPressNext.bind(this);
     this.onPressBack = this.onPressBack.bind(this);
     this.onPressFullscreen = this.onPressFullscreen.bind(this);
+    document.querySelector('.overlay').classList.remove('hidden');
   }
 
   onLoadMetaData() {
@@ -115,11 +116,6 @@ class Video {
     this.video.poster = info.poster;
     // add the source
     this.video.src = info.video;
-    // when we can start to play we do so
-    this.video.oncanplay = () => {
-      this.video.pause();
-      document.querySelector('.overlay').classList.remove('hidden');
-    };
   }
 
   bindControls() {
