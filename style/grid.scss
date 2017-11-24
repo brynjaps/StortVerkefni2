@@ -18,25 +18,21 @@ $gutter: 20px;
   padding-right: $gutter / 2;
   padding-left: $gutter / 2;
 
-  // &-12 {
-  //   @include columns(12);
-  // }
-  //
-  // &-8 {
-  //   @include columns(8);
-  // }
-  //
-  // &-6 {
-  //   @include columns(6);
-  // }
-  //
-  // &-4 {
-  //   @include columns(4);
-  // }
-  //
-  // &-3 {
-  //   @include columns(3);
-  // }
+  &-12 {
+    @include columns(12);
+  }
+
+  &-6 {
+    @include columns(6);
+  }
+
+  &-10 {
+    @include columns(10);
+  }
+
+  &-4 {
+    @include columns(4);
+  }
 
   &-lg {
     @media (min-width: 1001px) {
