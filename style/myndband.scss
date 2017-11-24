@@ -50,6 +50,7 @@
   position: relative;
   width: 100%;
   margin-bottom: 30px;
+  cursor: pointer;
 
   video {
     width: 100%;
@@ -115,9 +116,10 @@ html {
 
 .go-back {
   margin-top: 50px;
+  cursor: pointer;
 
-  @media (min-width: 1000px)
+  @media (max-width: 500px)
   {
-    font-size: 10px;
+    font-size: 20px;
   }
 }
