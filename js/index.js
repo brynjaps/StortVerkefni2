@@ -118,16 +118,18 @@ const program = (function() {
     let hour = minute/60;
     let day = hour/24;
     let week = day/7;
+    let month = day/30;
     let year = day/365;
 
     year = year.toString();
+    month = month.toString();
     week = week.toString();
     day = day.toString();
     hour = hour.toString();
 
     //let timeArray = [year, "ári síðan", "árum síðan", week, "viku síðan", "vikum síðan", day, "degi síðan", "dögum síðan", hour, "klukkustund síðan", "klukkustundum síðan"];
 
-    let timeArray = [year, week, day, hour];
+    let timeArray = [year, month, week, day, hour];
 
     for(let i = 0; i < timeArray.length; i++)
     {
@@ -135,9 +137,10 @@ const program = (function() {
     }
 
     year = timeArray[0];
-    week = timeArray[1];
-    day = timeArray[2];
-    hour = timeArray[3];
+    month = timeArray[1];
+    week = timeArray[2];
+    day = timeArray[3];
+    hour = timeArray[4];
 
     let smallP = document.createElement('p');
     link.appendChild(smallP);
@@ -150,6 +153,17 @@ const program = (function() {
       }
       else {
         smallP.appendChild(document.createTextNode("Fyrir " + year + " árum síðan"));
+      }
+    }
+    else if(month >= 1)
+    {
+      if(month < 2)
+      {
+        smallP.appendChild(document.createTextNode("Fyrir " + month + " mánuði síðan"));
+      }
+      else
+      {
+        smallP.appendChild(document.createTextNode("Fyrir " + month + " mánuðum síðan"));
       }
     }
     else if(week >= 1)
