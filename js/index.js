@@ -42,7 +42,7 @@ const program = (function() {
         bigDiv = document.createElement('div');
         //bigDiv.setAttribute('class','bottom');
         let title = document.createElement('h1');
-        title.appendChild(document.createTextNode(data.categories[i].title))
+        title.appendChild(document.createTextNode(data.categories[i].title));
         bigDiv.appendChild(title);
         container.appendChild(bigDiv);
         let bottom = document.createElement('div');
@@ -87,7 +87,13 @@ const program = (function() {
     link.appendChild(nDiv);
     nDiv.appendChild(img);
     let videoTitle = document.createElement('p');
-    videoTitle.appendChild(document.createTextNode(data.title));
+    let length = data.title;
+    if (data.title.length < 41) {
+      length = data.title;
+    } else {
+      length = data.title.slice(0, 39);
+    }
+    videoTitle.appendChild(document.createTextNode(length));
     videoTitle.setAttribute('class','title');
     link.appendChild(videoTitle);
     let miniDiv = document.createElement('div');
