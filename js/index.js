@@ -27,17 +27,17 @@ const program = (function() {
 
     url = API_URL;
 
-    empty(container);
-    const img = document.createElement('img');
-    img.src = 'loading.gif';
-    container.appendChild(img);
+    document.querySelector('.loading').visible = true;
 
     const request = new XMLHttpRequest();
 
     request.open('GET', url, true);
     request.onload = function() {
       const data = JSON.parse(request.response);
-      empty(container);
+      empty(main);
+      heading.appendChild(document.createTextNode('Myndbandaleigan'));
+      main.appendChild(heading);
+      main.appendChild(container);
       for(let i = 0; i < data.categories.length; i++) {
         bigDiv = document.createElement('div');
         let title = document.createElement('h1');
@@ -211,11 +211,8 @@ const program = (function() {
 
   function init(main) {
     heading = document.createElement('h1');
-    heading.appendChild(document.createTextNode('Myndbandaleigan'));
-    main.appendChild(heading);
 
     container = document.createElement('div');
-    main.appendChild(container);
     fetchData();
   }
 
