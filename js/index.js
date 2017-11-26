@@ -40,7 +40,6 @@ const program = (function() {
       empty(container);
       for(let i = 0; i < data.categories.length; i++) {
         bigDiv = document.createElement('div');
-        //bigDiv.setAttribute('class','bottom');
         let title = document.createElement('h1');
         title.appendChild(document.createTextNode(data.categories[i].title));
         bigDiv.appendChild(title);
