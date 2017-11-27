@@ -101,24 +101,21 @@ main {
 .return {
   padding-top: 40px;
   text-align: center;
-
-  button {
-    font-size: 1.3em;
-    color: rgba(255, 255, 255, 255);
-    background: none;
-    border: 0;
-  }
 }
 
-html {
+.html {
   padding: 20px;
 }
 
 .go-back {
   margin-top: 50px;
+  font-size: 1.3em;
+  color: rgba(255, 255, 255, 255);
   cursor: pointer;
+  background: none;
+  border: 0;
 
   @media (max-width: 500px) {
-    font-size: 20px;
+    font-size: 2em;
   }
 }
