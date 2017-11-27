@@ -17,6 +17,7 @@ class Video {
   onLoadMetaData() {
     // create a new instance of XMLHttpRequest
     const request = new XMLHttpRequest();
+
     // set the url
     request.open('GET', videoJsonUrl, true);
     // register to the onload event
@@ -134,6 +135,7 @@ class Video {
 
   init(id) {
     this.id = id;
+
     this.onLoadMetaData();
   }
 }

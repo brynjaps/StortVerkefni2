@@ -46,7 +46,7 @@ const program = (function() {
 
         //býr til línuna á milli flokkanna
         createBottom();
-        
+
         //býr til div utan um myndböndin í flokki
         createMedDiv();
         for(let j = 0; j < data.categories[i].videos.length; j++)
@@ -62,8 +62,7 @@ const program = (function() {
   }
 
   //býr til div sem heldur utan um flokka myndbanda
-  function createBigDiv(data)
-  {
+  function createBigDiv(data) {
     bigDiv = document.createElement('div');
     let title = document.createElement('h1');
     title.appendChild(document.createTextNode(data.title));
@@ -81,8 +80,7 @@ const program = (function() {
   }
 
   //býr til div utan um myndböndin í flokki
-  function createMedDiv()
-  {
+  function createMedDiv() {
     medDiv = document.createElement('div');
     medDiv.setAttribute('class','row');
     bigDiv.appendChild(medDiv);
