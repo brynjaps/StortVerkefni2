@@ -27,4 +27,4 @@ Scss skrárnar eru í sér möppu sem heitir style og svo eru javascript skrárn
 ## Hópurinn
 Bjartur Guðmundsson                 bjg38@hi.is
 Brynja Pálína Sigurgeirsdóttir      bps5@hi.is
-Guðrún Ágústsdóttir
+Guðrún Stella Ágústsdóttir          gsa15@hi.is
