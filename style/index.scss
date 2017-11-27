@@ -1,7 +1,7 @@
 @import "main.scss";
 @import "grid.scss";
 
-html {
+.html {
   width: 100%;
   max-width: 1200px;
   box-sizing: border-box;
@@ -9,12 +9,12 @@ html {
   margin: auto;
 }
 
-a {
+.a {
   color: $fontColor;
   text-decoration: none;
 }
 
-body {
+.body {
   margin: 0;
 }
 
@@ -54,10 +54,19 @@ body {
 .title {
   margin-top: 5px;
   margin-bottom: 0;
+  overflow: hidden;
   font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .time {
   margin-top: 3px;
   font-size: 12px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 300px;
 }

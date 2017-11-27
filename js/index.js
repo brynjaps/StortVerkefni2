@@ -15,6 +15,7 @@ const program = (function() {
   let smallDiv;
   let medDiv;
   let link;
+  let nDiv;
 
   function empty(el) {
     while (el.firstChild) {
@@ -39,19 +40,15 @@ const program = (function() {
       main.appendChild(heading);
       main.appendChild(container);
       for(let i = 0; i < data.categories.length; i++) {
-        bigDiv = document.createElement('div');
-        let title = document.createElement('h1');
-        title.appendChild(document.createTextNode(data.categories[i].title));
-        bigDiv.appendChild(title);
-        container.appendChild(bigDiv);
-        let bottom = document.createElement('div');
-        bottom.setAttribute('class','bottom');
-        bottom.classList.add('col');
-        bottom.classList.add('col-10');
-        container.appendChild(bottom);
-        medDiv = document.createElement('div');
-        medDiv.setAttribute('class','row');
-        bigDiv.appendChild(medDiv);
+
+        //býr til div sem heldur utan um flokka myndbanda
+        createBigDiv(data.categories[i]);
+
+        //býr til línuna á milli flokkanna
+        createBottom();
+        
+        //býr til div utan um myndböndin í flokki
+        createMedDiv();
         for(let j = 0; j < data.categories[i].videos.length; j++)
         {
           let video = (data.categories[i].videos[j])-1;
@@ -64,37 +61,103 @@ const program = (function() {
     request.send();
   }
 
+  //býr til div sem heldur utan um flokka myndbanda
+  function createBigDiv(data)
+  {
+    bigDiv = document.createElement('div');
+    let title = document.createElement('h1');
+    title.appendChild(document.createTextNode(data.title));
+    bigDiv.appendChild(title);
+    container.appendChild(bigDiv);
+  }
+
+  //býr til línuna á milli flokkanna
+  function createBottom() {
+    let bottom = document.createElement('div');
+    bottom.setAttribute('class','bottom');
+    bottom.classList.add('col');
+    bottom.classList.add('col-10');
+    container.appendChild(bottom);
+  }
+
+  //býr til div utan um myndböndin í flokki
+  function createMedDiv()
+  {
+    medDiv = document.createElement('div');
+    medDiv.setAttribute('class','row');
+    bigDiv.appendChild(medDiv);
+  }
+
   //býr til div sem er með mynd af myndbandinu og titli þess
   function show(data) {
+    //breytir id í streng
     let id = data.id.toString();
+    //bætir id við htmlLink-inn fyrir myndbandssíðu myndbandsins
     let htmlLink = "myndband.html?id=";
     url = htmlLink + id;
-    let nDiv = document.createElement('div');
-    nDiv.setAttribute('class','div__image');
+
+    //býr til div fyrir hvert myndbandsposter, titil og tíma
+    createSmallDiv();
+
+    //býr til link á myndbandið á myndband.html síðunni
+    createLink(url);
+
+    //býr til div utan um myndina af myndbandinu
+    createNDiv();
+
+    //birtir myndina af myndbandinu
+    createImg(data);
+
+    //birtir titil myndbandsins
+    createVideoTitle(data);
+
+    //birtir lengd myndbands
+    createMiniDiv(data);
+  }
+
+  //býr til div fyrir hvert myndbandsposter, titil og tíma
+  function createSmallDiv() {
     smallDiv = document.createElement('div');
     smallDiv.setAttribute('class','col');
     smallDiv.classList.add('col-lg-4');
     smallDiv.classList.add('col-md-6');
     smallDiv.classList.add('col-sm-12');
+    medDiv.appendChild(smallDiv);
+  }
+
+  //býr til link á myndbandið á myndband.html síðunni
+  function createLink(url) {
     link = document.createElement('a');
+    link.setAttribute('class', 'a');
     smallDiv.appendChild(link);
     link.href = url;
-    medDiv.appendChild(smallDiv);
+  }
+
+  //býr til div utan um myndina af myndbandinu
+  function createNDiv() {
+    nDiv = document.createElement('div');
+    nDiv.setAttribute('class','div__image');
+    link.appendChild(nDiv);
+  }
+
+  //birtir myndina af myndbandinu
+  function createImg(data) {
     let img = document.createElement('img');
     img.setAttribute('class', 'image');
     img.src = data.poster;
-    link.appendChild(nDiv);
     nDiv.appendChild(img);
+  }
+
+  //birtir titil myndbandsins
+  function createVideoTitle(data) {
     let videoTitle = document.createElement('p');
-    let length = data.title;
-    if (data.title.length < 41) {
-      length = data.title;
-    } else {
-      length = data.title.slice(0, 39);
-    }
-    videoTitle.appendChild(document.createTextNode(length));
+    videoTitle.appendChild(document.createTextNode(data.title));
     videoTitle.setAttribute('class','title');
     link.appendChild(videoTitle);
+  }
+
+  //birtir lengd myndbands
+  function createMiniDiv(data) {
     let miniDiv = document.createElement('div');
     miniDiv.setAttribute('class','duration');
     let time = convertTime(data.duration);
@@ -211,7 +274,6 @@ const program = (function() {
 
   function init(main) {
     heading = document.createElement('h1');
-
     container = document.createElement('div');
     fetchData();
   }
