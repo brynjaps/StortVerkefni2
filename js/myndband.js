@@ -1,5 +1,6 @@
 // constant url to vide.json
 const videoJsonUrl = 'videos.json';
+const test = '/';
 
 class Video {
   constructor() {
@@ -109,7 +110,7 @@ class Video {
       const infoEl = document.querySelector('.info');
       infoEl.innerHTML = '<p>Þetta video er ekki til, farðu til baka.</p>';
       infoEl.classList.remove('hidden');
-      document.querySelector('button').addEventListener('click', () => { window.location.href = "/" })
+      document.querySelector('button').addEventListener('click', () => { window.location.href = test })
       return;
     }
     this.bindControls();
@@ -130,7 +131,7 @@ class Video {
     controls.querySelector('.next-button').addEventListener('click', this.onPressNext);
     controls.querySelector('.fullscreen-button').addEventListener('click', this.onPressFullscreen);
     document.querySelector('video').addEventListener('click', this.onPressPlay);
-    document.querySelector('button').addEventListener('click', () => { window.location.href = '/'; });
+    document.querySelector('button').addEventListener('click', () => { window.location.href = test; });
   }
 
   init(id) {

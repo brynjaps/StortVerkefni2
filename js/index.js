@@ -1,4 +1,4 @@
-var API_URL = '/videos.json?id=';
+var API_URL = 'videos.json';
 
 document.addEventListener('DOMContentLoaded', function () {
   const main = document.querySelector('#main');
